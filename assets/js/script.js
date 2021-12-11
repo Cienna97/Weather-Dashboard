@@ -9,12 +9,20 @@ var weatherContainer = document.querySelector('#weather');
 var searchHistoryContainer = document.querySelector('#history');
 
 
-function fetchCityWeather(location) {
+var displayWeather = function(weather) {
+  console.log(weather);
+}
+
+
+var gerCityWeather = function(city) {
+};
+
+
+function fetchWeather(location) {
     var { lat } = location;
     var { lon } = location;
     var city = location.name;
     var apiUrl = `${weatherApiRootUrl}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${weatherApiKey}`;
-  
     fetch(apiUrl)
       .then(function (res) {
         return res.json();
@@ -27,17 +35,18 @@ function fetchCityWeather(location) {
       });
   }
 
-//var getCityWeather = function() {
+var getCityWeather = function() {
     //console.log("function was called");
 
-   //var response = fetch("").then(function(response){
-        //response.json().then(function(data){
-            //console.log(data);
-        //});
-   // }); 
+   var response = fetch("apiUrl").then(function(response){
+        response.json().then(function(data){
+            console.log(data);
+        });
+    }); 
     
     
-//};
+};
 
 
-//getCityWeather();
+getCityWeather();
+

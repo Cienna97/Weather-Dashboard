@@ -18,7 +18,7 @@
     <title>Weather Dashboard</title>
 </head>
 
-<body>
+
    
   <div class="pure-u-1">
       <section class="hero">
@@ -26,35 +26,44 @@
             <h1>Weather Dashboard</h1>
           </div>
       </section>
+    </header>
+    </div>
 
-  </header>
 
-
-  <main class="flex-row justify-space-between"> 
+  <main class="flex-row justify-space-between">
     <div class="col-12 col-md-4">
-    <div class ="card"></div>
-    <form id="user-form" class="card-body">
-      <label class="form-label" for="searchforcity">Search For City</label>
-      <input name="search" id="search" type="text" autofocus="true" class="form-input" />
-      <button type="submit" class="btn">Search</button>
-    </form>
-  </div>
-
-
-    
-    
-    
+      <div class="card">
+        <h3 class="card-header">Search By City</h3>
+        <form id="user-form" class="card-body">
+          <label class="form-label" for="city">City Name</label>
+          <input name="username" id="username" type="text" autofocus="true" class="form-input" />
+          <button type="submit" class="btn">Search</button>
+        </form>
+      </div>
     </div>
     
     <div class="col-12 col-md-8">
-      <h2 class="subtitle">Showing Weather: <span id="repo-search-term"></span></h2>
-      <div id="repos-container" class="list-group"></div>
+      <h2 class="subtitle">Showing Weather:<span id="city-search-term"></span></h2>
+      <div id="cities-container" class="list-group"></div>
   </main>
+
+
+
+
+    
+  
+  
+  </div>
+</section>
+</div>
+    
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="./assets/js/script.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 
 </body>
 
