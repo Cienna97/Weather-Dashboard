@@ -3,6 +3,10 @@ var weatherApiRootUrl = 'https://api.openweathermap.org';
 var weatherApiKey = 'f6e7949c7164702382c89036e588b531';
 
 var searchForm = document.querySelector('#search-form');
+var searchInput = document.querySelector('#search-input');
+var todayContainer = document.querySelector('#today');
+var weatherContainer = document.querySelector('#weather');
+var searchHistoryContainer = document.querySelector('#history');
 
 
 function fetchCityWeather(location) {

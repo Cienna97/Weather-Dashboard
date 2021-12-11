@@ -1,0 +1,12 @@
+:root {
+    --yellow: #ffff00;
+   --darkblue: #00008b ;
+}
+
+.pure-u-1 {
+    font-size: 30px;
+    color: #ffff00;
+    text-align: center;
+    background-color: var(--darkblue);
+    
+}
