@@ -1,12 +1,39 @@
-var getCityWeather = function() {
-    console.log("function was called");
+var searchHistory = [];
+var weatherApiRootUrl = 'https://api.openweathermap.org';
+var weatherApiKey = 'f6e7949c7164702382c89036e588b531';
 
-    fetch("https://api.openweathermap.org/data/2.5/onecall?").then(function(response){
-        console.log("inside", repsonse)
-    });
+var searchForm = document.querySelector('#search-form');
+
+
+function fetchCityWeather(location) {
+    var { lat } = location;
+    var { lon } = location;
+    var city = location.name;
+    var apiUrl = `${weatherApiRootUrl}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${weatherApiKey}`;
+  
+    fetch(apiUrl)
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (data) {
+        renderItems(city, data);
+      })
+      .catch(function (err) {
+        console.error(err);
+      });
+  }
+
+//var getCityWeather = function() {
+    //console.log("function was called");
+
+   //var response = fetch("").then(function(response){
+        //response.json().then(function(data){
+            //console.log(data);
+        //});
+   // }); 
     
-    console.log("outside");
-};
+    
+//};
 
 
-getCityWeather();
+//getCityWeather();
