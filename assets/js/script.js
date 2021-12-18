@@ -29,7 +29,7 @@ var searchHistoryContainer = document.getElementById('search-history');
 var pastCities  =  JSON.parse(localStorage.getItem("Search-History")) || []; 
 
 function init() {
-  historyCities.forEach(city => {
+  pastCities.forEach(city => {
     var element = document.createElement("button");
   element.addEventListener("click", function (event) {
 
@@ -56,24 +56,33 @@ function renderButton() {
   });
 
   element.textContent = searchCityHistory;
-  }
+
+  searchHistoryContainer.appendChild(element);
+  if (pastCities.length >= 5) {
+    pastCities.shift();
+    pastCities.push(searchBar.value);
+    searchHistoryContainer.textContent = '';
+    init();
+  } else {
+    pastCities.push(searchBar.value);
+  
 
 //btn.setAttribute('info-search', searchHistory[i]);
 //btn.textContent = searchHistory[i];
 //searchHistoryContainer.append(btn);
 
-localStorage.setItem("Search-History", JSON.stringify(history))
-
-
-
-
-var displayWeather = function(weather) {
-  console.log(weather);
+localStorage.setItem("Search-History", JSON.stringify(pastCities))
+}
 }
 
+searchBtn.addEventListener("click", function (event) {
+  event.preventDefault();
 
-var gerCityWeather = function(city) {
-};
+  renderButton();
+  apiWeatherData(searchBar.value);
+})
+
+
 
 function renderItems(city, data) {
   renderCurrentWeather(city, data.current, data.timezone);
