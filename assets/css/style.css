@@ -9,6 +9,7 @@
     text-align: center;
     background-color: var(--darkblue);
     
+    
 }
 
 .form-label {
@@ -18,13 +19,13 @@
 .card-header {
     font-size: 30px;
 
-text-align: center;
+text-align: left;
 }
 
 .card-body {
-    text-align: center;
+    text-align: left;
 }
 
 .subtitle {
-    text-align: center;
+    text-align: left;
 }
