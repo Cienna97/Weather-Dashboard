@@ -12,6 +12,9 @@ var searchHistoryContainer = document.querySelector('#history');
 //btn.textContent = searchHistory[i];
 //searchHistoryContainer.append(btn);
 
+localStorage.setItem("Search-History", JSON.stringify(history))
+
+
 searchHistory
 
 var displayWeather = function(weather) {
@@ -28,48 +31,44 @@ function renderItems(city, data) {
 }
 
 
-function fetchWeather() {
-    var  lat = 33.44;
-    var  lon = 94.04;
-    //var city = location.name;
-    var apiUrl = `${weatherApiRootUrl}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${weatherApiKey}`;
-    fetch(apiUrl)
+function fetchWeather(searchedCity) {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&units=imperial&appid=6e7949c7164702382c89036e588b531`)
+    
       .then(function (res) {
         return res.json();
       })
       .then(function (data) {
         renderItems(city, data);
-        console.log(data)
+        console.log(data);
+
+        currentWeather(data, searchedCity);
+
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=current,minutely,hourly,alerts&units=imperial&appid=6e7949c7164702382c89036e588b531`)
+        
+        .then(function (response) {
+          return response.json
+        })
+        .then(function (data){
+          console.log(data)
+
+          currentUVIndex.innerHTML = 'UV Index: ${data.daily[0].uvi}';
+        })
       })
-      .catch(function (err) {
-        console.error(err);
-      });
-  }
-
-  function fetchCoords(search) {
-    var apiUrl ='${weatherApiRootUrl}/geo/1.0/direct?q=${search}&limit=5&appid=${weatherApiKey}';
-
-    fetch(apiUrl)
-    .then(function (res) {
-      return res.json();
-
-    })
+   
   }
 
 
-var getCityWeather = function() {
-    console.log("function was called");
 
-   var response = fetch("apiUrl").then(function(response){
-        response.json().then(function(data){
-            console.log(data);
-        });
-    }); 
-    
-    
-};
+
+//ar getCityWeather = function() {
+  
+
+   //var response = fetch("apiUrl").then(function(response){
+        //esponse.json().then(function(data){
+     
+   //
 
 
 
-getCityWeather();
+//getCityWeather();
 
