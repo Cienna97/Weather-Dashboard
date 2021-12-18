@@ -1,6 +1,7 @@
 
 var searchBar = document.getElementById('searchBar');
-var searchBtn = document.getElementById('searchBtn');var weatherApiRootUrl = 'https://api.openweathermap.org';
+var searchBtn = document.getElementById('searchBtn');
+var weatherApiRootUrl = 'https://api.openweathermap.org';
 var weatherApiKey = 'f6e7949c7164702382c89036e588b531';
 
 var userForm = document.querySelector('#user-form');
@@ -79,7 +80,7 @@ searchBtn.addEventListener("click", function (event) {
   event.preventDefault();
 
   renderButton();
-  apiWeatherData(searchBar.value);
+  fetchWeather(searchBar.value);
 })
 
 
@@ -113,11 +114,22 @@ function fetchWeather(searchedCity) {
           currentUVIndex.innerHTML = 'UV Index: ${data.daily[0].uvi}';
 
 
-          weatherForecast(data, 1, dateOne, symbolOne, tempOne, windOne, humidityOne);
-  
+          weatherForecast(data, 1, dateOne, tempOne);
+          weatherForecast(data, 2, dateTwo, tempTwo);
+          weatherForecast(data, 3, dateThree, tempThree);
+          weatherForecast(data, 4, dateFour, tempFour);
+          weatherForecast(data, 5, dateFive, temFive);
         });
       })
+    
    
+  };
+
+  function currentWeather(data, searchCityHistory) {
+    cityName.innerHTML = '${data.name} --- ${new Date((data.dt * 1000)).toLocaleDateString("en-US)} --- <img src=${weatherApiRootUrl}/img/wn/${data.weather[0].icon}@2x.png>';
+    currentTemp.innerHTML = 'Temp: ${data.main.temp} F';
+
+    localStorage.setItem("Search-History", searchCityHistory)
   }
 
 
