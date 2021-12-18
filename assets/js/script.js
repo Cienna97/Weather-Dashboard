@@ -10,12 +10,15 @@ var weatherContainer = document.querySelector('#weather');
 
 cityName = document.getElementById('city-name')
 currentTemp = document.getElementById('temp')
+currentUVIndex = document.getElementById('uv-index')
 
 var dateOne = document.getElementById('day-one-date');
 var dateTwo = document.getElementById('day-two-date');
 var dateThree = document.getElementById('day-three-date');
 var dateFour = document.getElementById('day-four-date');
 var dateFive = document.getElementById('day-five-date');
+
+
 var tempOne = document.getElementById('one-temp');
 var tempTwo = document.getElementById('two-temp');
 var tempThree = document.getElementById('three-temp');
@@ -25,8 +28,35 @@ var tempFive = document.getElementById('five-temp');
 var searchHistoryContainer = document.getElementById('search-history');
 var pastCities  =  JSON.parse(localStorage.getItem("Search-History")) || []; 
 
+function init() {
+  historyCities.forEach(city => {
+    var element = document.createElement("button");
+  element.addEventListener("click", function (event) {
 
+    element.value = city;
+    apiWeatherData(event.target.value);
+  });
+  element.textContent = city;
+  searchHistoryContainer.appendChild(element);
 
+  });
+};
+
+function renderButton() {
+  if (!searchBar.value) {
+    return;
+  } else { 
+    var searchCityHistory = searchBar.value;
+    console.log(searchCityHistory);
+
+    var element = document.createElement("button");
+    element.value = searchBar.value;
+    element.addEventListener("click", function (event) {
+      apiWeatherData(event.target.value);
+  });
+
+  element.textContent = searchCityHistory;
+  }
 
 //btn.setAttribute('info-search', searchHistory[i]);
 //btn.textContent = searchHistory[i];
@@ -82,7 +112,7 @@ function fetchWeather(searchedCity) {
   }
 
 
-
+}
 
 //ar getCityWeather = function() {
   
@@ -95,4 +125,4 @@ function fetchWeather(searchedCity) {
 
 
 //getCityWeather();
-
+init();
