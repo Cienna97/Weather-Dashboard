@@ -1,6 +1,8 @@
 
 var searchBar = document.getElementById('searchBar');
 var searchBtn = document.getElementById('searchBtn');
+var cityContainer = document.querySelector('.one');
+
 var weatherApiRootUrl = 'https://api.openweathermap.org';
 var weatherApiKey = 'f6e7949c7164702382c89036e588b531';
 
@@ -13,11 +15,11 @@ cityName = document.getElementById('city-name')
 currentTemp = document.getElementById('temp')
 currentUVIndex = document.getElementById('uv-index')
 
-var dateOne = document.getElementById('day-one-date');
-var dateTwo = document.getElementById('day-two-date');
-var dateThree = document.getElementById('day-three-date');
-var dateFour = document.getElementById('day-four-date');
-var dateFive = document.getElementById('day-five-date');
+var dateOne = document.getElementById('date-one');
+var dateTwo = document.getElementById('date-two');
+var dateThree = document.getElementById('date-three');
+var dateFour = document.getElementById('date-four');
+var dateFive = document.getElementById('date-five');
 
 
 var tempOne = document.getElementById('one-temp');
@@ -27,14 +29,14 @@ var tempFour = document.getElementById('four-temp');
 var tempFive = document.getElementById('five-temp');
 
 var searchHistoryContainer = document.getElementById('search-history');
-var pastCities  =  JSON.parse(localStorage.getItem("Search-History")) || []; 
+var historyCities =  JSON.parse(localStorage.getItem("Search-History")) || []; 
 
 function init() {
-  pastCities.forEach(city => {
+  historyCities.forEach(city => {
     var element = document.createElement("button");
+  element.setAttribute('class', 'btn btn-secondary w-100');
+  element.value = city
   element.addEventListener("click", function (event) {
-
-    element.value = city;
     apiWeatherData(event.target.value);
   });
   element.textContent = city;
@@ -42,6 +44,7 @@ function init() {
 
   });
 };
+
 
 function renderButton() {
   if (!searchBar.value) {
