@@ -33,10 +33,10 @@ var tempSix = document.getElementById('six-temp');
 var tempSeven = document.getElementById('seven-temp');
 
 var searchHistoryContainer = document.getElementById('search-history');
-var historyCities =  JSON.parse(localStorage.getItem("Search-History")) || []; 
+var pastCities =  JSON.parse(localStorage.getItem("Search-History")) || []; 
 
 function init() {
-  historyCities.forEach(city => {
+  pastCities.forEach(city => {
     var element = document.createElement("button");
   element.setAttribute('class', 'btn btn-secondary w-100');
   element.value = city
