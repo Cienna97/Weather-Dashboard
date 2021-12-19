@@ -36,6 +36,8 @@ var searchHistoryContainer = document.getElementById('search-history');
 var pastCities =  JSON.parse(localStorage.getItem("Search-History")) || []; 
 
 function init() {
+  console.log('pastCities', pastCities);
+  if (pastCities.length !==0){
   pastCities.forEach(city => {
     var element = document.createElement("button");
   element.setAttribute('class', 'btn btn-secondary w-100');
@@ -45,8 +47,9 @@ function init() {
   });
   element.textContent = city;
   searchHistoryContainer.appendChild(element);
-
+  
   });
+}
 };
 
 
@@ -98,17 +101,16 @@ function renderItems(city, data) {
 }
 
 
-function fetchWeather(searchedCity) {
-    fetch(`${weatherApiRootUrl}/data/2.5/weather?q=${searchedCity}&units=imperial&appid=${weatherApiKey}`)
+function fetchWeather(searchCity) {
+    fetch(`${weatherApiRootUrl}/data/2.5/weather?q=${searchCity}&units=imperial&appid=${weatherApiKey}`)
     
       .then(function (res) {
         return res.json();
       })
       .then(function (data) {
         renderItems(city, data);
-        console.log(data);
 
-        currentWeather(data, searchedCity);
+        currentWeather(data, searchCity);
 
         fetch(`${weatherApiRootUrl}/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=current,minutely,hourly,alerts&units=imperial&appid=${weatherApiKey}`)
         
@@ -116,7 +118,6 @@ function fetchWeather(searchedCity) {
           return response.json
         })
         .then(function (data){
-          console.log(data)
 
           currentUVIndex.innerHTML = 'UV Index: ${data.daily[0].uvi}';
 
@@ -132,11 +133,11 @@ function fetchWeather(searchedCity) {
    
   };
 
-  function currentWeather(data, searchCityHistory) {
+  function currentWeather(data, searchCity) {
     cityName.innerHTML = '${data.name} --- ${new Date((data.dt * 1000)).toLocaleDateString("en-US)} --- <img src=${weatherApiRootUrl}/img/wn/${data.weather[0].icon}@2x.png>';
     currentTemp.innerHTML = 'Temp: ${data.main.temp} F';
 
-    localStorage.setItem("Search-History", searchCityHistory)
+    localStorage.setItem("Search-History", searchCity)
   }
 
 functionWeatherForcast(data, digit, date, temp) 
