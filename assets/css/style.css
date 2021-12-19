@@ -8,8 +8,7 @@
     color: #ffff00;
     text-align: center;
     background-color: var(--darkblue);
-    
-    
+
 }
 
 .form-label {
@@ -28,4 +27,9 @@ text-align: left;
 
 .subtitle {
     text-align: left;
+}
+
+.btn {
+    background-color: gray;
+    position: center;
 }
