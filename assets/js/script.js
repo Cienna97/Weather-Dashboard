@@ -20,6 +20,8 @@ var dateTwo = document.getElementById('date-two');
 var dateThree = document.getElementById('date-three');
 var dateFour = document.getElementById('date-four');
 var dateFive = document.getElementById('date-five');
+var dateSix = document.getElementById('date-six');
+var dateSeven = document.getElementById('date-seven')
 
 
 var tempOne = document.getElementById('one-temp');
@@ -27,6 +29,8 @@ var tempTwo = document.getElementById('two-temp');
 var tempThree = document.getElementById('three-temp');
 var tempFour = document.getElementById('four-temp');
 var tempFive = document.getElementById('five-temp');
+var tempSix = document.getElementById('six-temp');
+var tempSeven = document.getElementById('seven-temp');
 
 var searchHistoryContainer = document.getElementById('search-history');
 var historyCities =  JSON.parse(localStorage.getItem("Search-History")) || []; 
