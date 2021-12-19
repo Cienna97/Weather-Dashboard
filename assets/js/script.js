@@ -132,8 +132,12 @@ function fetchWeather(searchedCity) {
     localStorage.setItem("Search-History", searchCityHistory)
   }
 
-
+functionWeatherForcast(data, digit, date, temp) 
+  date.innerHTML = `${new Date((data.daily[digit].dt * 1000)).toLocaleDateString("en-US")}`;
+  temp.innerHTML = `${data.daily[digit].temp.day} F`;
 }
+
+
 
 //ar getCityWeather = function() {
   
