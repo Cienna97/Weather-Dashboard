@@ -36,7 +36,7 @@ var searchHistoryContainer = document.getElementById('search-history');
 var pastCities =  JSON.parse(localStorage.getItem("Search-History")) || []; 
 
 function init() {
-  console.log('pastCities', pastCities);
+  console.log('historyCities', pastCities);
   if (pastCities.length !==0){
   pastCities.forEach(city => {
     var element = document.createElement("button");
