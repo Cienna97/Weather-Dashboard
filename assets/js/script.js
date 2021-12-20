@@ -57,7 +57,7 @@ function renderButton() {
   if (!searchBar.value) {
     return;
   } else { 
-    var searchCityHistory = searchBar.value;
+    let searchCityHistory = searchBar.value;
     console.log(searchCityHistory);
 
     var element = document.createElement("button");
@@ -137,11 +137,11 @@ function fetchWeather(searchCity) {
     cityName.innerHTML = '${data.name} --- ${new Date((data.dt * 1000)).toLocaleDateString("en-US)} --- <img src=${weatherApiRootUrl}/img/wn/${data.weather[0].icon}@2x.png>';
     currentTemp.innerHTML = 'Temp: ${data.main.temp} F';
 
-    localStorage.setItem("Search-History", searchCity)
+    localStorage.setItem("Search History", searchCity)
   }
 
 functionWeatherForcast(data, digit, date, temp) 
-  date.innerHTML = `${new Date((data.daily[digit].dt * 1000)).toLocaleDateString("en-US")}`;
+  date.innerHTML = `${new Date ((data.daily[digit].dt * 1000)).toLocaleDateString("en-US")}`;
   temp.innerHTML = `${data.daily[digit].temp.day} F`;
 }
 

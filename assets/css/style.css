@@ -4,10 +4,11 @@
 }
 
 .pure-u-1 {
-    font-size: 30px;
+    font-size: 40px;
     color: #ffff00;
     text-align: center;
     background-color: var(--darkblue);
+    padding: 30px;
 
 }
 
@@ -33,3 +34,4 @@ text-align: left;
     background-color: gray;
 
 }
+

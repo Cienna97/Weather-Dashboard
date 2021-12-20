@@ -22,14 +22,18 @@ THEN I am again presented with current and future conditions for that city
 
 # How to Use Application
 
-
+User will type in the City they wish to know the weather conditons of and then then press "search" and the page will give the weather forecast for the next seven days for that city
 
 # Links
 
-Github:
+Github: https://github.com/Cienna97/Weather-Dashboard.git
 
-Live Application: 
+Live Application: https://cienna97.github.io/Weather-Dashboard/
 
 # Visual 
 
 Screen Shot
+
+# Future Development 
+
+Finish Weather-Dashboard so it is functional and the API returns the weather from the specified city.
